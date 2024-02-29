@@ -768,6 +768,17 @@ variable "recreate_missing_package" {
   default     = true
 }
 
+# modifiications
+variable "region" {
+  description = "The region to create resources"
+  type        = string
+}
+
+variable "account_id" {
+  description = "The aws account id"
+  type        = string
+}
+
 variable "trigger_on_package_timestamp" {
   description = "Whether to recreate the Lambda package if the timestamp changes"
   type        = bool
