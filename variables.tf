@@ -768,6 +768,7 @@ variable "recreate_missing_package" {
   default     = true
 }
 
+# modifiications
 variable "region" {
   description = "The region to create resources"
   type        = string
