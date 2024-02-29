@@ -812,3 +812,8 @@ variable "logging_log_group" {
   type        = string
   default     = null
 }
+
+variable "partition" {
+  description = "The aws partition."
+  type        = string
+}
