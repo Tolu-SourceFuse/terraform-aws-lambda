@@ -33,7 +33,7 @@ resource "aws_lambda_function" "this" {
   runtime                            = var.package_type != "Zip" ? null : var.runtime
   layers                             = var.layers
   timeout                            = var.lambda_at_edge ? min(var.timeout, 30) : var.timeout
-  publish                            = (var.lambda_at_edge || var.snap_start) ? true : var.publish
+  # publish                            = (var.lambda_at_edge || var.snap_start) ? true : var.publish
   kms_key_arn                        = var.kms_key_arn
   image_uri                          = var.image_uri
   package_type                       = var.package_type
@@ -54,9 +54,9 @@ resource "aws_lambda_function" "this" {
   filename         = local.filename
   source_code_hash = var.ignore_source_code_hash ? null : (local.filename == null ? false : fileexists(local.filename)) && !local.was_missing ? filebase64sha256(local.filename) : null
 
-  s3_bucket         = local.s3_bucket
-  s3_key            = local.s3_key
-  s3_object_version = local.s3_object_version
+  # s3_bucket         = local.s3_bucket
+  # s3_key            = local.s3_key
+  # s3_object_version = local.s3_object_version
 
   dynamic "image_config" {
     for_each = length(var.image_config_entry_point) > 0 || length(var.image_config_command) > 0 || var.image_config_working_directory != null ? [true] : []
